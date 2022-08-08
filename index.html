@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redact App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="overlay">
+            <div class="alert-box">
+                <div class="dialogue-head">
+                    Acknowledge This Message
+                </div>
+                <div class="dialogue-body"></div>
+                <div class="dialogue-footer">
+                    <button class="overlay-btn">OK</button>
+                </div>
+            </div>
+        </div>
+        <h1 id="heading">We'd help you share content on social media safely</h1>
+        <form action="" class="wrapper">
+            <div class="main-message">
+                <label for="message" class="text-area-label">Type your text here</label>
+                <textarea name="message" id="message" cols="30" rows="10" 
+                 placeholder="e.g: I love fucking girls with big boobs" required></textarea>
+            </div>
+            <div class="scrambling-part">
+                <div class="words-specified">
+                   <label for="words-specified" class="words-specified-label">
+                      Specify word(s) you would like to redact a part of
+                   </label>
+                   <input type="text" name="words-specified" 
+                    id="words-specified" class="words-specified" 
+                    placeholder="e.g: fucking boobs" required>
+                </div>
+                <div class="word-part-to-redact">
+                   <label for="words-part-to-redact" class="words-part-to-redact">
+                      Specify the part of the word(s) you would like to redact.
+                   </label>
+                   <input type="text" name="words-part-to-redact" 
+                    id="words-part-to-redact" class="words-part-to-redact" 
+                    placeholder="e.g: uck oo"  required>
+                </div>
+            </div>
+            <div class="specify-symbol">
+               <label for="symbol" class="symbol">
+                  Specify what you would like to hide
+                  the word(s) with....default(*)
+               </label>
+               <input type="text" name="symbol" id="symbol" class="symbol"
+               placeholder="e.g: !*$£#">
+            </div>
+            <div class="redact-button">
+                <button>Redact</button>
+            </div>
+        </form>
+        
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

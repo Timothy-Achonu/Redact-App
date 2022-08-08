@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --elements-margin: 10px;
+    --label-margin-bottom: 10px;
+    --placeHolder-fonts: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 1) ) ,
+    url(image.jpg) no-repeat center center/cover;
+    color: white;
+    /* background-color: rgba(0, 0, 0, 1); */
+    /* background: linear-gradient(135deg, var(--primary), var(--secondary)),
+    url('../HTML/lady.jpg') no-repeat center center / cover; */
+    font-family: 'oswald';
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px 0;
+}
+
+#heading {
+    width: 100%;
+    text-align: center;
+    padding: 0 7px;
+    padding-top: 20px;
+    font-family: 'Fraunces';
+}
+
+.main-message {
+    display: flex;
+    flex-direction: column;
+    margin: var(--elements-margin) 0;
+}
+.main-message > .text-area-label {
+    font-size: 1.2rem;
+    margin-bottom: var(--label-margin-bottom);
+}
+.main-message >  #message {
+    border-radius: 30px;
+    background-color: #eee;
+    outline: none;
+    padding: 10px 20px;
+    border: 4px solid #777;
+    height: 200px;
+}
+.main-message > #message::placeholder {
+    color: #777;
+    font-family: var(--placeHolder-fonts);
+}
+
+.scrambling-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: var(--elements-margin) 0;
+}
+
+.scrambling-part > .words-specified {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--elements-margin);
+}
+.scrambling-part > .words-specified > 
+label {
+    margin-bottom: var(--label-margin-bottom);
+    font-size: 1.2rem;
+}
+.scrambling-part > .words-specified > input {
+    padding: 10px 4px;
+    border: #777 2px solid;
+    border-radius: 23px;
+}
+.scrambling-part > .words-specified > input::placeholder {
+    font-family: var(--placeHolder-fonts);
+}
+.scrambling-part > .word-part-to-redact {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.scrambling-part > .word-part-to-redact > 
+label {
+    margin-bottom: var(--label-margin-bottom);
+    font-size: 1.2rem;
+}
+.scrambling-part > .word-part-to-redact > input {
+    padding: 10px 4px;
+    border: #777 2px solid;
+    border-radius: 23px;
+}
+.scrambling-part > .word-part-to-redact > input::placeholder{
+    font-family: var(--placeHolder-fonts);
+}
+
+.specify-symbol {
+    display: flex;
+    flex-direction: column;
+}
+
+.specify-symbol >  label {
+    margin-bottom: var(--label-margin-bottom);
+    font-size: 1.2rem;
+}
+.specify-symbol input{
+    padding: 10px 4px;
+    border: #777 2px solid;
+    border-radius: 23px;
+    width: 100%;
+}
+.specify-symbol input::placeholder {
+    font-family: var(--placeHolder-fonts);
+}
+.redact-button {
+    margin: auto;
+    margin-top: 20px;
+}
+.redact-button > button {
+    background-color: black;
+    padding: 10px 12px;
+    border: #eee solid 1px;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+
+    transition: background-color 800ms ease-in-out;
+}
+
+button:hover {
+    background-color: rgb(18, 18, 238);
+}
+
+.alert-user {
+    position: absolute;
+    bottom: 54%;
+    background-color: rgba(256, 256, 256, 1);
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 5px 7px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: black;
+    opacity: 0;
+    z-index: -1;
+    animation: show 1000ms linear alternate forwards;
+}
+@keyframes show {
+    0% {
+        opacity: 0;
+        z-index: -1;
+    }
+    100% {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+.alert-user.hide {
+    animation: hide 1000ms linear alternate forwards;
+}
+@keyframes hide {
+    0% {
+        opacity: 1;
+        z-index: 1;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+
+
+
+
+
+@media (min-width:700px) {
+    .specify-symbol {
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        margin: auto;
+        /* display: none; */
+        position: absolute;
+        left: 60%;
+        top: 160px;
+    }
+    .specify-symbol input{
+        width: 100%;
+    }
+    .specify-symbol >  label {
+        text-align: center;
+    }  
+    .main-message >  #message {
+        border-radius: 30px;
+        background-color: #eee;
+        outline: none;
+        padding: 10px 20px;
+        border: 4px solid #777;
+        height: 200px;
+        width: 55%;
+    }
+}
+
+@media (min-width:900px) {
+    .scrambling-part {
+       flex-direction: row;
+    }
+    .scrambling-part > .words-specified > label {
+        text-align: center;
+   }
+   .scrambling-part > .word-part-to-redact {
+       margin-left: 8px;
+   }
+   .scrambling-part > .word-part-to-redact > label {
+       text-align: center;
+   }
+}
+
+
+
+@media (max-width:500px) {
+    .specify-symbol > label{ 
+        text-align: center;
+    }
+    .specify-symbol input{
+        width: 100%;
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(0, 0%, 0%, 0.3);
+    z-index: 9;
+}
+
+.overlay > .alert-box {
+    width: 70%;
+    background-color: black;
+    color: white;
+    margin: auto;
+    margin-top: 140px;
+}
+.dialogue-head {
+    background-color: #444;
+    padding: 10px 8px;
+    font-size: 1.4rem;
+}
+.dialogue-body {
+    padding: 20px 8px;
+    font-size: 1.2rem;
+}
+.dialogue-footer {
+    padding: 10px 4px;
+    background-color: #444;
+    text-align: end;
+}
+.dialogue-footer > button {
+    background-color:#6495ED;
+    padding:10px 20px;
+    cursor: pointer;
+}
+
+
+.overlay.alert-user-custom {
+    display: block;
+}
