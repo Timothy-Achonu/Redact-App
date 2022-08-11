@@ -1,13 +1,21 @@
 const headingText = document.querySelector('#heading');
 const textArea = document.querySelector('#message');
+const textAreaLabel = document.querySelector('.textarea-label');
 const scramblingPart = document.querySelector('.scrambling-part');
 const wordsToRedact = document.querySelector('#words-specified')
 const wordsPartToRedact = document.
 querySelector('#words-part-to-redact');
+const specifySymbolSection = document.
+querySelector('.specify-symbol');
 const specifiedSymbol = document.
 querySelector('#symbol');
 const redactButton = document.querySelector('.redact-button');
 let inputIn = 0;
+const unredactButton = document.querySelector('.unredact-button');
+const copyButton = document.querySelector('.copy-btn');
+const editButton = document.querySelector('.edit-btn');
+
+
 // Overlay divs
 const overlay =  document.querySelector('.overlay')
 const overlayBtn = document.querySelector('.overlay-btn')
@@ -25,10 +33,11 @@ overlayBtn.addEventListener('click', () => {
 })
 const AlertUser = new customAlert();
 
-
+let firstMessage;
+let redactedMessage;
 redactButton.addEventListener('click', (e) => {
     e.preventDefault()
-    let firstMessage = textArea.value.replace(/\n/gi," ").
+    firstMessage = textArea.value.replace(/\n/gi," ").
     split(' ');
     let specifiedWords = wordsToRedact.value.
     replace(/\n/gi," ").split(' ');
@@ -36,7 +45,7 @@ redactButton.addEventListener('click', (e) => {
     replace(/\n/gi," ").split(' ');
     let count = 0;
     inputIn = 0;
-    let redactedMessage = firstMessage.map( (item) => {
+    redactedMessage = firstMessage.map( (item) => {
         let wordsMatchedCount = 0;
         let sym;
         if(count <= specifiedParts.length) {
@@ -75,18 +84,16 @@ redactButton.addEventListener('click', (e) => {
         return item;
     })
     textArea.value = redactedMessage.join(' ');
+    scramblingPart.classList.add('hide');
+    specifySymbolSection.classList.add('hide');
+    textAreaLabel.innerText = "Here is your redacted text!";
+    redactButton.parentElement.classList.add('hide');
+    copyButton.parentElement.classList.add('show');
+
 })
 
 wordsPartToRedact.addEventListener('input', () => {
     if(inputIn < 1) {
-        // let alertUser = document.createElement('div');
-        // alertUser.innerText = 'this has to follow the same order with the specified words'
-        // alertUser.setAttribute('class','alert-user');
-        // const specifyWordPart = document.querySelector('.word-part-to-redact')
-        // specifyWordPart.appendChild(alertUser)
-        // setTimeout( () => {
-        //     alertUser.classList.add('hide')
-        // }, 5000);
         wordsPartToRedact.blur();
         AlertUser.
         render('This has to contain the same number of words, and also follow the same order with the specified words');
@@ -94,8 +101,35 @@ wordsPartToRedact.addEventListener('input', () => {
     inputIn++;
 })
 
+unredactButton.addEventListener('click', (e) => {
+   e.preventDefault();
+   textArea.value = firstMessage.join(' ');
+})
 
+copyButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    textArea.select();
+   /* For mobile devices */
+    textArea.setSelectionRange(0, 99999); 
+    navigator.clipboard.writeText(textArea.value);
+    let  = document.querySelector('.time-taken');
+    let copyMessage = document.createElement('div');
+    copyMessage.setAttribute('class','copy-message')
+    copyMessage.innerText = `Copied to clipboard`;
+    copyButton.appendChild(copyMessage)
+    setTimeout( () => {
+     copyButton.removeChild(copyMessage);
+    }, 1000);
+})
 
+editButton.addEventListener('click', () => {
+    textArea.value = redactedMessage.join(' ');
+    scramblingPart.classList.remove('hide');
+    specifySymbolSection.classList.remove('hide');
+    textAreaLabel.innerText ="Type your text here";
+    copyButton.parentElement.classList.remove('show');
+    redactButton.parentElement.classList.remove('hide');
+})
 
 
 
@@ -123,3 +157,11 @@ let anArray = ['boy.','boyous', 'jj', 'he', 'i']
 // function callConsole() {
 //     console.log('now')
 // }
+// let theRegex = /[\s""]love\s/;
+let theRegex = /\bl/;
+let aVariable = 'word';
+let aRegex = new RegExp("\^"+"\[\]"+aVariable+"\$", 'g');
+// let aRegex = new RegExp( aVar+"\$", 'g');
+ 
+// console.log(aRegex.test('word'));
+console.log(theRegex.test('love i you beloved'));
