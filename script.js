@@ -14,7 +14,12 @@ let inputIn = 0;
 const unredactButton = document.querySelector('.unredact-button');
 const copyButton = document.querySelector('.copy-btn');
 const editButton = document.querySelector('.edit-btn');
-
+// DOM for SocialHandles
+const socialHandles = document.querySelector('.share-to-socials');
+const whatsapp = document.querySelector('.fa-whatsapp');
+const facebook = document.querySelector('.fa-facebook');
+const twitter = document.querySelector('.fa-twitter');
+const telegram = document.querySelector('.fa-telegram');
 
 // Overlay divs
 const overlay =  document.querySelector('.overlay')
@@ -89,6 +94,7 @@ redactButton.addEventListener('click', (e) => {
     textAreaLabel.innerText = "Here is your redacted text!";
     redactButton.parentElement.classList.add('hide');
     copyButton.parentElement.classList.add('show');
+    socialHandles.classList.add('show');
 
 })
 
@@ -112,7 +118,6 @@ copyButton.addEventListener('click', (e) => {
    /* For mobile devices */
     textArea.setSelectionRange(0, 99999); 
     navigator.clipboard.writeText(textArea.value);
-    let  = document.querySelector('.time-taken');
     let copyMessage = document.createElement('div');
     copyMessage.setAttribute('class','copy-message')
     copyMessage.innerText = `Copied to clipboard`;
@@ -131,7 +136,22 @@ editButton.addEventListener('click', () => {
     redactButton.parentElement.classList.remove('hide');
 })
 
+whatsapp.addEventListener('click', () => {
+    const whatsappAPI = `https://wa.me/?text= ${redactedMessage.join(' ')}`;
+    window.open(URL = whatsappAPI);
+  })
 
+  twitter.addEventListener('click', () => {
+    const twitterAPI = `https://twitter.com/intent/tweet?text= 
+    ${redactedMessage.join(' ')}`
+    window.open(URL = twitterAPI)
+  })
+
+  telegram.addEventListener('click', () => {
+  const telegramAPI = `https://t.me/share/url? 
+  url=text=${redactedMessage.join(' ')}`
+  window.open (URL = telegramAPI);
+  })
 
 let aword = 
 'boy'

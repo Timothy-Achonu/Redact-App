@@ -194,7 +194,41 @@ label {
     width: fit-content;
 }
 
+/* social Handles */
+.share-to-socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1.3rem;
+}
+.share-to-socials > .SocialHandles {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.share-to-socials > .SocialHandles > a {
+    text-decoration: none;
 
+    transition: font-size 500ms ease-in-out;
+}
+.share-to-socials > .SocialHandles > a:hover {
+    font-size: 1.9rem;
+}
+.share-to-socials > .SocialHandles > a.fa-facebook {
+   color: blue;
+}
+.share-to-socials > .SocialHandles > a.fa-twitter {
+   color: rgb(109, 109, 245);
+}
+.share-to-socials > .SocialHandles > a.fa-telegram {
+   color: rgb(109, 109, 245);
+}
+.share-to-socials > .SocialHandles > a.fa-whatsapp {
+   color: green;
+}
 
 
 @media (min-width:700px) {
@@ -223,6 +257,23 @@ label {
         height: 200px;
         width: 55%;
     }
+    .share-to-socials {
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        margin: auto;
+        /* display: none; */
+        position: absolute;
+        left: 60%;
+        top: 160px;
+    }
+}
+
+.share-to-socials{
+    display: none;
+}
+.share-to-socials.show{
+    display: flex;
 }
 
 @media (min-width:900px) {
