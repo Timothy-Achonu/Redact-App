@@ -63,15 +63,12 @@ redactButton.addEventListener('click', (e) => {
                     sym = specifiedSymbol.value[0].
                     repeat(specifiedParts[count].length);
                 }
-                console.log(count)
                 item = item.replace(regex, sym)
-                console.log(item, regex);
                 wordsMatchedCount++;
             }
             specifiedWords.forEach( (word, index) => {
                 count = index
                 if(word === item) {
-                    console.log(index, word, item);
                     changeWord();
                 }
                 if(wordsMatchedCount < 1) {
@@ -79,7 +76,6 @@ redactButton.addEventListener('click', (e) => {
                         let wordRegex = 
                         new RegExp("\\b"+word+"\\b", 'i');
                         if(wordRegex.test(item) === true) {
-                            console.log(index, word, item);
                             changeWord();
                         }
                     }    
@@ -95,7 +91,6 @@ redactButton.addEventListener('click', (e) => {
     redactButton.parentElement.classList.add('hide');
     copyButton.parentElement.classList.add('show');
     socialHandles.classList.add('show');
-
 })
 
 wordsPartToRedact.addEventListener('input', () => {
@@ -134,6 +129,8 @@ editButton.addEventListener('click', () => {
     textAreaLabel.innerText ="Type your text here";
     copyButton.parentElement.classList.remove('show');
     redactButton.parentElement.classList.remove('hide');
+    socialHandles.classList.remove('show');
+
 })
 
 whatsapp.addEventListener('click', () => {
