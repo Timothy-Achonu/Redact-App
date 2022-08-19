@@ -182,3 +182,5 @@ let aRegex = new RegExp("\^"+"\[\]"+aVariable+"\$", 'g');
  
 // console.log(aRegex.test('word'));
 console.log(theRegex.test('love i you beloved'));
+
+console.log('love');
